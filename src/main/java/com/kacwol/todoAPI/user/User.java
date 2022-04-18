@@ -2,6 +2,7 @@ package com.kacwol.todoAPI.user;
 
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class User {
 
     @Id
@@ -19,4 +21,6 @@ public class User {
     private Long id;
 
     private String userName;
+
+
 }

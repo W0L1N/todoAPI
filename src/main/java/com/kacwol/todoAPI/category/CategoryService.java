@@ -4,11 +4,13 @@ import java.util.List;
 
 public interface CategoryService {
 
-    boolean addCategory(CategoryDto category, Long userId);
+    Category getCategory(Long categoryId,Long userId);
 
-    boolean deleteCategory(Long categoryId, Long userId);
+    void addCategory(CategoryDto category, Long userId);
 
-    boolean changeCategoryTitle(Long categoryId,String title,Long userId);
+    void deleteCategory(Long categoryId, Long userId);
+
+    void changeCategoryTitle(Long categoryId,String title,Long userId);
 
     List<Category> getAllCategories(Long userId);
 }

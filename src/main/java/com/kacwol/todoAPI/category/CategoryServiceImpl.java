@@ -21,27 +21,32 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public boolean addCategory(CategoryDto category, Long userId) {
+    public Category getCategory(Long categoryId, Long userId) {
+        return categoryRepo.findByIdAndUserId(categoryId, userId).orElseThrow(() -> {
+            throw new CategoryNotFoundException();
+        });
+    }
+
+    @Override
+    public void addCategory(CategoryDto category, Long userId) {
         User user = userRepo.findById(userId).orElseThrow(() -> {
             throw new UserNotFoundException();
         });
         categoryRepo.save(new Category(category, user));
-        return true;
     }
 
     @Override
-    public boolean deleteCategory(Long categoryId, Long userId) {
-        return categoryRepo.deleteCategoryByIdAndUserId(categoryId, userId);
+    public void deleteCategory(Long categoryId, Long userId) {
+        categoryRepo.deleteCategoryByIdAndUserId(categoryId, userId);
     }
 
     @Override
-    public boolean changeCategoryTitle(Long categoryId, String title, Long userId) {
+    public void changeCategoryTitle(Long categoryId, String title, Long userId) {
         Category category = categoryRepo.findByIdAndUserId(categoryId, userId).orElseThrow(() -> {
             throw new CategoryNotFoundException();
         });
         category.changeTitle(title);
         categoryRepo.save(category);
-        return true;
     }
 
     @Override

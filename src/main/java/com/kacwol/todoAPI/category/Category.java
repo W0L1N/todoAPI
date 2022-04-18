@@ -2,6 +2,7 @@ package com.kacwol.todoAPI.category;
 
 import com.kacwol.todoAPI.user.User;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@EqualsAndHashCode
 public class Category {
 
     @Id
@@ -41,4 +43,5 @@ public class Category {
     public void changeTitle(String title) {
         this.title = title;
     }
+
 }

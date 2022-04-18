@@ -41,6 +41,7 @@ public class CategoryServiceTest {
         verify(categoryRepo).save(argumentCaptor.capture());
         Category actual = argumentCaptor.getValue();
 
+
         Assert.assertEquals(user,actual.getUser());
         Assert.assertEquals(categoryDto.getTitle(),actual.getTitle());
     }
